@@ -1,0 +1,89 @@
+.thp-popup {
+  position: fixed;
+  z-index: 2147483647;
+  background: #0e0e10;
+  border: 1px solid #9147ff;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 120ms ease, transform 120ms ease;
+  pointer-events: none;
+}
+
+.thp-popup.thp-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.thp-popup .thp-header {
+  font: 600 13px/1.2 Inter, Roobert, Arial, sans-serif;
+  color: #efeff1;
+  padding: 6px 10px;
+  background: #18181b;
+  display: flex;
+  justify-content: space-between;
+}
+
+.thp-popup .thp-header span:last-child {
+  color: #adadb8;
+  font-weight: 400;
+}
+
+.thp-popup .thp-info {
+  background: #18181b;
+  padding: 8px 10px 9px;
+  box-sizing: border-box;
+  font-family: Inter, Roobert, Arial, sans-serif;
+}
+
+.thp-popup .thp-title {
+  color: #efeff1;
+  font-size: 13px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.thp-popup .thp-meta {
+  color: #adadb8;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.thp-popup .thp-meta:empty {
+  display: none;
+}
+
+.thp-popup iframe {
+  display: block;
+  border: 0;
+}
+
+.thp-popup.thp-visible {
+  pointer-events: auto;
+}
+
+.thp-popup .thp-video {
+  position: relative;
+  background: #000;
+}
+
+/* Live thumbnail shown instantly, faded out once the video is playing. */
+.thp-popup .thp-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.thp-popup.thp-ready .thp-thumb {
+  opacity: 0;
+}

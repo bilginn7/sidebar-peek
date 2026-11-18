@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sidebar Peek – Settings</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0; padding: 16px 18px; width: 320px;
+      background: #18181b; color: #efeff1;
+      font: 13px/1.4 Inter, "Segoe UI", Arial, sans-serif;
+    }
+    h1 { font-size: 15px; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+    h1 img { width: 20px; height: 20px; }
+    .group { margin-bottom: 16px; }
+    .label { font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .label span:last-child { color: #bf94ff; font-weight: 400; }
+    input[type=range] { width: 100%; accent-color: #9147ff; }
+    .presets { display: flex; gap: 6px; margin-top: 6px; }
+    .presets button {
+      flex: 1; background: #26262c; color: #efeff1; border: 1px solid #3a3a3d;
+      border-radius: 4px; padding: 4px 0; cursor: pointer; font: inherit;
+    }
+    .presets button:hover { border-color: #9147ff; }
+    .toggle { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-top: 1px solid #2f2f35; }
+    .toggle small { display: block; color: #adadb8; }
+    .toggle input { width: 18px; height: 18px; accent-color: #9147ff; flex-shrink: 0; margin-left: 12px; }
+    .note { color: #adadb8; font-size: 11px; margin-top: 6px; }
+    .saved { color: #00f593; font-size: 12px; height: 16px; }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" alt="">Sidebar Peek settings</h1>
+
+  <div class="group">
+    <div class="label"><span>Player size</span><span id="sizeLabel"></span></div>
+    <input type="range" id="width" min="534" max="960" step="2">
+    <div class="presets">
+      <button data-w="534">Small</button>
+      <button data-w="640">Medium</button>
+      <button data-w="800">Large</button>
+      <button data-w="960">XL</button>
+    </div>
+    <div class="note" id="sizeNote"></div>
+  </div>
+
+  <div class="group">
+    <label class="toggle"><span>Video only<small>Hide Twitch's buttons, title and labels on top of the video</small></span><input type="checkbox" id="cleanVideo"></label>
+    <label class="toggle"><span>Channel name bar<small>Name shown above the video</small></span><input type="checkbox" id="showHeader"></label>
+    <label class="toggle"><span>Title &amp; game below<small>Stream title, game and viewer count</small></span><input type="checkbox" id="showInfo"></label>
+    <label class="toggle"><span>Skip content warnings<small>Auto-accept Twitch's "intended for certain audiences" screen in previews. Only turn on if you are 18+.</small></span><input type="checkbox" id="skipWarning"></label>
+  </div>
+
+  <div class="group">
+    <div class="label"><span>Hover delay</span><span id="delayLabel"></span></div>
+    <input type="range" id="openDelay" min="0" max="1500" step="50">
+    <div class="note">The stream already starts loading in the background during this delay.</div>
+  </div>
+
+  <div class="group">
+    <div class="label"><span>Keep recent previews warm</span><span id="warmLabel"></span></div>
+    <input type="range" id="keepWarm" min="0" max="120" step="5">
+    <div class="note">Re-hovering a channel you just watched is instant. Uses some bandwidth while warm (max 3 players).</div>
+  </div>
+
+  <div class="saved" id="saved"></div>
+
+  <script src="settings.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
